@@ -17,3 +17,14 @@ spec:
           image: hello-k8s:v1
           ports:
             - containerPort: 3000
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: hello-config
+                  key: MESSAGE
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: PASSWORD
